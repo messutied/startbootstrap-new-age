@@ -39,4 +39,8 @@
   // Collapse the navbar when page is scrolled
   $(window).scroll(navbarCollapse);
 
+  $(document).on('shown.bs.modal', function (e) {
+    $(e.target).find('[autofocus]').focus();
+  });
+
 })(jQuery); // End of use strict
