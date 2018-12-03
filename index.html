@@ -3,6 +3,33 @@
 
   <head>
 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130315329-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-130315329-1');
+
+      window.onload = function() {
+        document.querySelectorAll('[data-ga-event]').forEach(function (el) {
+          el.addEventListener('click', function() {
+            ga('send', 'event', 'Button', 'click', el.dataset.gaEvent);
+          });
+        });
+      };
+
+      function onFormSubmit() {
+        ga('send', 'event', {
+          eventCategory: 'Form',
+          eventAction: 'submit',
+          eventLabel: 'Sign up form',
+          transport: 'beacon'
+        });
+      }
+    </script>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -44,7 +71,7 @@
               <a class="nav-link js-scroll-trigger" href="#download">Herunterladen</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#features">Eigenschaften</a>
+              <a class="nav-link js-scroll-trigger" href="#features">Überblick</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Kontakt</a>
@@ -66,14 +93,15 @@
               </ul>
               <br>
               <div class="text-center">
-                <a href="#" class="btn btn-outline btn-xl" data-toggle="modal" data-target="#exampleModal">
+                <a href="#" class="btn btn-outline btn-xl" data-toggle="modal" data-target="#exampleModal" data-ga-event="Download Now">
                   Jetzt Herunterladen!
                 </a>
               </div>
             </div>
           </div>
           <div class="col-lg-7 my-auto text-center">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/KOdb8bjha4A" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/KOdb8bjha4A" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/EOFwj1m60SU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" showinfo="0" allowfullscreen></iframe>
           </div>
         </div>
       </div>
@@ -82,8 +110,8 @@
     <section class="features" id="features">
       <div class="container">
         <div class="section-heading text-center">
-          <h2>Unsere Eigenschaften</h2>
-          <p class="text-muted">Überprüfe, was du mit swappz machen kannst!</p>
+          <h2>Ein kurzer Überblick</h2>
+          <p class="text-muted">Das bietet Dir Swappz</p>
           <hr>
         </div>
         <div class="row">
@@ -92,11 +120,8 @@
               <div class="device-mockup iphone6_plus portrait white">
                 <div class="device">
                   <div class="screen">
-                    <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                    <img src="img/demo-screen-1.jpg" class="img-fluid" alt="">
-                  </div>
-                  <div class="button">
-                    <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+                    <img src="img/swappz-preview-slide2.jpeg" class="img-fluid" alt="">
+                    <img src="img/swappz-preview-slide1.jpeg" class="img-fluid" alt="">
                   </div>
                 </div>
               </div>
@@ -109,30 +134,30 @@
                   <div class="feature-item">
                     <i class="icon-present text-primary"></i>
                     <h3>Kostenlos</h3>
-                    <p class="text-muted">Ready to use HTML/CSS device mockups, no Photoshop required!</p>
+                    <p class="text-muted">Download und Nutzung der Swappz App ist und bleibt für alle Nutzer kostenfrei</p>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="feature-item">
-                    <i class="icon-camera text-primary"></i>
+                    <i class="icon-screen-smartphone text-primary"></i>
                     <h3>Android & iPhone</h3>
-                    <p class="text-muted">Put an image, video, animation, or anything else in the screen!</p>
+                    <p class="text-muted">Die Swappz App findest Du sowohl in Googles PlayStore als auch in Apples AppStore</p>
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-lg-6">
                   <div class="feature-item">
-                    <i class="icon-screen-smartphone text-primary"></i>
-                    <h3>Flexibel</h3>
-                    <p class="text-muted">As always, this theme is free to download and use for any purpose!</p>
+                    <i class="icon-magic-wand text-primary"></i>
+                    <h3>Einfach</h3>
+                    <p class="text-muted">Wir benachrichtigen Dich, sobald wir einen passenden Tauschpartner für Dich gefunden haben</p>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="feature-item">
                     <i class="icon-lock-open text-primary"></i>
-                    <h3>Privacy First</h3>
-                    <p class="text-muted">Since this theme is MIT licensed, you can use it commercially!</p>
+                    <h3>Sicherheit</h3>
+                    <p class="text-muted">Deine Daten werden streng vertraulich nach den Vorschriften der DSGVO behandelt</p>
                   </div>
                 </div>
               </div>
@@ -144,12 +169,12 @@
 
     <section class="contact bg-primary" id="contact">
       <div class="container">
-        <h2>We
+        <h2>Wir
           <i class="fa fa-heart"></i>
-          new friends!</h2>
+          neue Freunde!</h2>
         <ul class="list-inline">
           <li class="list-inline-item social-twitter">
-            Write as at <a href="mailto:contact@swappz.de" style="color:black; text-decoration:underline">contact@swappz.de</a>
+            Schreibe uns auf <a href="mailto:info@swappz.de" style="color:black; text-decoration:underline">info@swappz.de</a>
           </li>
         </ul>
       </div>
@@ -157,16 +182,16 @@
 
     <footer>
       <div class="container">
-        <p>&copy; Swappz.de 2018. All Rights Reserved.</p>
+        <p>&copy; Swappz.de 2018. Alle Rechte vorbehalten.</p>
         <ul class="list-inline">
           <li class="list-inline-item">
-            <a href="#">Privacy</a>
+            <a href="#">Datenschutz</a>
           </li>
+          <!-- <li class="list-inline-item">
+            <a href="#">AGB</a>
+          </li> -->
           <li class="list-inline-item">
-            <a href="#">Terms</a>
-          </li>
-          <li class="list-inline-item">
-            <a href="#">FAQ</a>
+            <a href="#">Impressum</a>
           </li>
         </ul>
       </div>
@@ -186,10 +211,10 @@
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <form action="/">
+          <form action="https://formspree.io/eduardo@messuti.io" method="POST" onsubmit="onFormSubmit()">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Jetzt Herunterladen</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-ga-event="Close Sign Up Modal">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
@@ -200,12 +225,12 @@
               </p>
 
               <div class="form-group">
-                <input type="email" placeholder="Deine e-mail" class="form-control" required="" autofocus>
+                <input type="email" name="email" placeholder="Deine e-mail" class="form-control" required="" autofocus>
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Zurücknehmen</button>
-              <button type="submit" class="btn btn-primary">Bestellen</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" data-ga-event="Cancel Sign Up">Zurücknehmen</button>
+              <button type="submit" class="btn btn-primary" data-ga-event="Submit Sign Up">Bestellen</button>
             </div>
           </form>
         </div>

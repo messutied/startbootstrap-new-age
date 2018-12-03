@@ -1,3 +1,10 @@
+@keyframes slide2FadeOutIn {
+    0% {opacity: 1;}
+    50% {opacity: 1;}
+    51% {opacity: 0;}
+    100% {opacity: 0;}
+}
+
 // Styling for the features section
 section.features {
     .section-heading {
@@ -18,6 +25,15 @@ section.features {
         margin-bottom: 100px;
         @media(min-width: 992px) {
             margin-bottom: 0;
+        }
+
+        .screen img {
+            position: absolute;
+            transform: translateY(-100px);
+
+            &:nth-child(2) {
+                animation: slide2FadeOutIn 5s infinite;
+            }
         }
     }
     .feature-item {

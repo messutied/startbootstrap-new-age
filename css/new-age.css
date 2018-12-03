@@ -234,6 +234,21 @@ section.download .badges .badge-link img {
   }
 }
 
+@keyframes slide2FadeOutIn {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  51% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 section.features .section-heading {
   margin-bottom: 100px;
 }
@@ -260,6 +275,15 @@ section.features .device-container {
   section.features .device-container {
     margin-bottom: 0;
   }
+}
+
+section.features .device-container .screen img {
+  position: absolute;
+  transform: translateY(-100px);
+}
+
+section.features .device-container .screen img:nth-child(2) {
+  animation: slide2FadeOutIn 5s infinite;
 }
 
 section.features .feature-item {
