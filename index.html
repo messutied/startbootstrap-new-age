@@ -28,6 +28,30 @@
           transport: 'beacon'
         });
       }
+
+      // Load Video
+
+      var tag = document.createElement('script');
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          videoId: 'EOFwj1m60SU',
+          playerVars: { controls: 0, showinfo: 0 },
+          events: { 'onStateChange': onPlayerStateChange }
+        });
+      }
+
+      var playStarted = false;
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !playStarted) {
+          ga('send', 'event', 'Video', 'play');
+          playStarted = true;
+        }
+      }
     </script>
 
     <meta charset="utf-8">
@@ -100,9 +124,8 @@
             </div>
           </div>
           <div class="col-lg-7 my-auto text-center">
-            <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/KOdb8bjha4A" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
             <div class="embed-responsive embed-responsive-16by9">
-              <iframe src="https://www.youtube.com/embed/EOFwj1m60SU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" showinfo="0" allowfullscreen></iframe>
+              <div id="player"></div>
             </div>
           </div>
         </div>
