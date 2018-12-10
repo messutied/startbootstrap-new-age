@@ -36,9 +36,8 @@
       var firstScriptTag = document.getElementsByTagName('script')[0];
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-      var player;
       function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
+        new YT.Player(window.innerWidth <= 992 ? 'player' : 'player2', {
           videoId: 'EOFwj1m60SU',
           playerVars: { controls: 0, showinfo: 0 },
           events: { 'onStateChange': onPlayerStateChange }
@@ -62,7 +61,7 @@
     <title>Swappz.de</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
 
     <!-- Custom fonts for this template -->
     <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
@@ -108,24 +107,37 @@
     <header class="masthead" id="download">
       <div class="container h-100">
         <div class="row h-100">
+          <div class="col-lg-7 my-auto text-center d-lg-none d-xl-none">
+            <div class="embed-responsive embed-responsive-16by9">
+              <div id="player"></div>
+            </div>
+
+            <br>
+            <br>
+            <a href="#" class="btn btn-primary btn-xl" data-toggle="modal" data-target="#exampleModal" data-ga-event="Download Now">
+              Jetzt Herunterladen!
+            </a>
+            <br>
+            <br>
+          </div>
           <div class="col-lg-5 my-auto">
             <div class="header-content mx-auto">
               <ul>
-                <li class="lead mb-3">Wähle Dein Produkt aus und teile es direkt mit der Swappz-Community</li>
-                <li class="lead mb-3">Teile der Community mit, ob Du verkaufen oder lieber tauschen möchtest</li>
-                <li class="lead mb-3">Du wirst benachrichtigt sobald wir Interessenten finden</li>
+                <li class="lead mb-4">Wähle Dein Produkt aus und teile es direkt mit der Swappz-Community</li>
+                <li class="lead mb-4">Teile der Community mit, ob Du verkaufen oder lieber tauschen möchtest</li>
+                <li class="lead mb-4">Du wirst benachrichtigt sobald wir Interessenten finden</li>
               </ul>
-              <br>
-              <div class="text-center">
-                <a href="#" class="btn btn-outline btn-xl" data-toggle="modal" data-target="#exampleModal" data-ga-event="Download Now">
+              <div class="text-center d-none">
+                <br>
+                <a href="#" class="btn btn-primary btn-xl" data-toggle="modal" data-target="#exampleModal" data-ga-event="Download Now">
                   Jetzt Herunterladen!
                 </a>
               </div>
             </div>
           </div>
-          <div class="col-lg-7 my-auto text-center">
+          <div class="col-lg-7 my-auto text-center d-none d-lg-block d-xl-block">
             <div class="embed-responsive embed-responsive-16by9">
-              <div id="player"></div>
+              <div id="player2"></div>
             </div>
           </div>
         </div>
@@ -188,6 +200,12 @@
               </div>
             </div>
           </div>
+        </div>
+
+        <div class="text-center">
+          <a href="#" class="btn btn-primary btn-xl" data-toggle="modal" data-target="#exampleModal" data-ga-event="Download Now">
+            Jetzt Herunterladen!
+          </a>
         </div>
       </div>
     </section>
@@ -255,7 +273,12 @@
               </p>
 
               <div class="form-group">
-                <input type="email" name="email" placeholder="Deine e-mail" class="form-control" required="" autofocus>
+                <label for="email">Deine e-mail</label>
+                <input type="email" name="email" class="form-control" required="" autofocus>
+              </div>
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Hiermit bestätige ich dass ich die Hinweise zum Datenschutz gelesen und akzeptiert habe</label>
               </div>
             </div>
             <div class="modal-footer">

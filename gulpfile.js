@@ -19,13 +19,13 @@ var banner = ['/*!\n',
 // Copy third party libraries from /node_modules into /vendor
 gulp.task('vendor', function() {
 
-  // Bootstrap
-  gulp.src([
-      './node_modules/bootstrap/dist/**/*',
-      '!./node_modules/bootstrap/dist/css/bootstrap-grid*',
-      '!./node_modules/bootstrap/dist/css/bootstrap-reboot*'
-    ])
-    .pipe(gulp.dest('./vendor/bootstrap'))
+  // // Bootstrap
+  // gulp.src([
+  //     './node_modules/bootstrap/dist/**/*',
+  //     '!./node_modules/bootstrap/dist/css/bootstrap-grid*',
+  //     '!./node_modules/bootstrap/dist/css/bootstrap-reboot*'
+  //   ])
+  //   .pipe(gulp.dest('./vendor/bootstrap'))
 
   // Font Awesome
   gulp.src([
