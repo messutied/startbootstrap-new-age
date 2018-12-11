@@ -11,46 +11,6 @@
       gtag('js', new Date());
 
       gtag('config', 'UA-130315329-1');
-
-      window.onload = function() {
-        document.querySelectorAll('[data-ga-event]').forEach(function (el) {
-          el.addEventListener('click', function() {
-            ga('send', 'event', 'Button', 'click', el.dataset.gaEvent);
-          });
-        });
-      };
-
-      function onFormSubmit() {
-        ga('send', 'event', {
-          eventCategory: 'Form',
-          eventAction: 'submit',
-          eventLabel: 'Sign up form',
-          transport: 'beacon'
-        });
-      }
-
-      // Load Video
-
-      var tag = document.createElement('script');
-      tag.src = "https://www.youtube.com/iframe_api";
-      var firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-      function onYouTubeIframeAPIReady() {
-        new YT.Player(window.innerWidth <= 992 ? 'player' : 'player2', {
-          videoId: 'EOFwj1m60SU',
-          playerVars: { controls: 0, showinfo: 0 },
-          events: { 'onStateChange': onPlayerStateChange }
-        });
-      }
-
-      var playStarted = false;
-      function onPlayerStateChange(event) {
-        if (event.data == YT.PlayerState.PLAYING && !playStarted) {
-          ga('send', 'event', 'Video', 'play');
-          playStarted = true;
-        }
-      }
     </script>
 
     <meta charset="utf-8">
@@ -127,7 +87,7 @@
                 <li class="lead mb-4">Teile der Community mit, ob Du verkaufen oder lieber tauschen möchtest</li>
                 <li class="lead mb-4">Du wirst benachrichtigt sobald wir Interessenten finden</li>
               </ul>
-              <div class="text-center d-none">
+              <div class="text-center d-none d-none d-lg-block d-xl-block">
                 <br>
                 <a href="#" class="btn btn-primary btn-xl" data-toggle="modal" data-target="#exampleModal" data-ga-event="Download Now">
                   Jetzt Herunterladen!
@@ -254,12 +214,13 @@
 
     <!-- Custom scripts for this template -->
     <script src="js/new-age.min.js"></script>
+    <script src="js/swappz.js"></script>
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <form action="https://formspree.io/signup@swappz.de" method="POST" onsubmit="onFormSubmit()">
+          <form action="https://formspree.io/signup@swappz.de" method="POST" onsubmit="return onFormSubmit(event)">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Jetzt Herunterladen</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-ga-event="Close Sign Up Modal">
