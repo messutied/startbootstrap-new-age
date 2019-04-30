@@ -34,6 +34,31 @@
     <!-- Custom styles for this template -->
     <link href="css/new-age.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+    <script>
+    window.addEventListener("load", function(){
+    window.cookieconsent.initialise({
+      "palette": {
+        "popup": {
+          "background": "#252e39"
+        },
+        "button": {
+          "background": "transparent",
+          "border": "#fcbd20",
+          "text": "#fcbd20"
+        }
+      },
+      "position": "bottom-left",
+      "content": {
+        "message": "Auf diesem Site werden Nutzungsdaten durch uns und eingebundene Dritte erfasst und ausgewertet (sog. Tracking), u.a. mittels Cookies.",
+        "dismiss": "Verstanden",
+        "link": "Weitere Informationen",
+        "href": "https://swappz.de/privacy.html"
+      }
+    })});
+    </script>
+
   </head>
 
   <body id="page-top">
